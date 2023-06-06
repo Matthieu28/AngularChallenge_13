@@ -1,0 +1,62 @@
+<img
+  src="https://cdn.icon-icons.com/icons2/909/PNG/512/back_icon-icons.com_71028.png"
+  alt="img_retour"
+  (click)="goBack()"
+/>
+<div class="form_div">
+  <h2>Ajoute ton pokémon</h2>
+
+  <form [formGroup]="newPokemonForm" (ngSubmit)="onSubmit()" #myForm="ngForm">
+    <div class="label_input">
+      <label for="nom"> Quel est le nom du pokémon ? </label>
+      <input
+        type="text"
+        formControlName="nom"
+        [class.error]="
+          myForm.submitted && newPokemonForm.controls['nom'].invalid
+        "
+      />
+    </div>
+    <div *ngIf="myForm.submitted && newPokemonForm.controls['nom'].errors">
+      <span *ngIf="newPokemonForm.controls['nom'].errors?.['required']">
+        Renseignez un nom.
+      </span>
+    </div>
+
+    <div class="label_input">
+      <label for="url"> Quel est l'url de l'image ? </label>
+      <input
+        type="text"
+        formControlName="url"
+        [class.error]="
+          myForm.submitted && newPokemonForm.controls['url'].invalid
+        "
+      />
+    </div>
+    <div *ngIf="myForm.submitted && newPokemonForm.controls['url'].errors">
+      <span *ngIf="newPokemonForm.controls['url'].errors?.['required']">
+        Renseignez une image.
+      </span>
+    </div>
+
+    <div class="label_input">
+      <label for="description"> Quelle est la description ? </label>
+      <input
+        type="text"
+        formControlName="description"
+        [class.error]="
+          myForm.submitted && newPokemonForm.controls['description'].invalid
+        "
+      />
+    </div>
+    <div
+      *ngIf="myForm.submitted && newPokemonForm.controls['description'].errors"
+    >
+      <span *ngIf="newPokemonForm.controls['description'].errors?.['required']">
+        Renseignez une description.
+      </span>
+    </div>
+
+    <button type="submit">Créer</button>
+  </form>
+</div>

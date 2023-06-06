@@ -1,0 +1,14 @@
+<div class="create_pokemon">
+  <p>Tu veux ajouter ton pokémon ? :</p>
+  <button (click)="clickNav()">Ajouter</button>
+</div>
+<h2>Pokédex :</h2>
+<div class="container_pokedex">
+  <app-pokemon-list
+    [pokemons]="pokemons"
+    (pokemonClick)="selectPokemon($event)"
+  ></app-pokemon-list>
+  <div *ngIf="selected">
+    <app-pokemon-detail [pokemon]="selected"></app-pokemon-detail>
+  </div>
+</div>

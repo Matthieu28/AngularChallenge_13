@@ -1,0 +1,6 @@
+<div class="container">
+  <div *ngFor="let pokemon of pokemons" (click)="onClick(pokemon)">
+    <h3>{{ pokemon.nom }}</h3>
+    <img [src]="pokemon.url" [alt]="pokemon.nom" />
+  </div>
+</div>
